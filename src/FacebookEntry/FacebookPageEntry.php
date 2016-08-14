@@ -87,8 +87,8 @@ class FacebookPageEntry extends AbstractEntry implements RecommendationInterface
         }
         
         if (!empty($date)) {
-            //$body['published'] = false;
-            //$body['scheduled_publish_time'] = $date;
+            $body['published'] = false;
+            $body['scheduled_publish_time'] = $date;
         }
         
         $this->setBody($body);
