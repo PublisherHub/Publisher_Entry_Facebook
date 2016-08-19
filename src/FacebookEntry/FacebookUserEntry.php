@@ -51,7 +51,7 @@ class FacebookUserEntry extends AbstractEntry implements RecommendationInterface
         string $message,
         string $url = '',
         string $title = '',
-        int $date = null
+        $date = null
     ) {
         $body = array();
         
@@ -59,11 +59,6 @@ class FacebookUserEntry extends AbstractEntry implements RecommendationInterface
         
         if (!empty($url)) {
             $body['link'] = $url;
-        }
-        
-        if (!empty($date)) {
-            //$body['published'] = false;
-            //$body['scheduled_publish_time'] = $date;
         }
         
         $this->setBody($body);
