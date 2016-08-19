@@ -6,7 +6,7 @@ FacebookUserEntry: post a status message as a user.
 
 FacebookPageEntry: post a status message as a page admin.
 -> implements publisher/recommendation
-    -> offers sheduled publishing
+    -> offers scheduled publishing
 
 
 # Installation
