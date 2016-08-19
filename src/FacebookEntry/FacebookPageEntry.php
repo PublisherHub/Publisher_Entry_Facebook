@@ -76,7 +76,7 @@ class FacebookPageEntry extends AbstractEntry implements RecommendationInterface
         string $message,
         string $url = '',
         string $title = '',
-        int $date = null
+        $date = null
     ) {
         $body = array();
         
@@ -86,12 +86,24 @@ class FacebookPageEntry extends AbstractEntry implements RecommendationInterface
             $body['link'] = $url;
         }
         
-        if (!empty($date)) {
-            $body['published'] = false;
-            $body['scheduled_publish_time'] = $date;
+        if ($date !== null) {
+            
+            if (is_int($date)) {
+                $scheduledDate = new \DateTime();
+                $scheduledDate->setTimestamp($date);
+            } else {
+                $scheduledDate = $date;
+            }
+            
+            $valid = Validator::isValidSchedule($scheduledDate, 'PT15M', 'P6M');
+            
+            if ($valid === true) {
+                $body['published'] = false;
+                $body['scheduled_publish_time'] = $scheduledDate->getTimestamp();
+            }
         }
         
         $this->setBody($body);
     }
-
+    
 }
