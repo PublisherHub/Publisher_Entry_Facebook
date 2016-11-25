@@ -12,6 +12,11 @@ class FacebookUserEntryTest extends EntryTest
         return 'Publisher\\Entry\\Facebook\\FacebookUserEntry';
     }
     
+    protected function getExpectedPublisherScopes()
+    {
+        return array('publish_actions');
+    }
+    
     public function getValidBody()
     {
         return array(
