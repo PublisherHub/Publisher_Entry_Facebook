@@ -13,7 +13,7 @@ Edit your `composer.json` and add:
 ```json
 {
     "require": {
-        "publisher/facebook-entry": "dev-master"
+        "publisher/entry_facebook": "dev-master"
     }
 }
 ```
