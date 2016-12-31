@@ -1,7 +1,7 @@
 {
-    "name": "publisher/facebook-entry",
+    "name": "publisher/entry_facebook",
     "description": "Entries for publisher/publisher to post on Facebook.",
-    "keywords": ["oauth", "publish", "post", "facebook"],
+    "keywords": ["publisher", "facebook", "entry", "publish", "post", "oauth"],
     "license": "MIT",
     "authors": [
         {
@@ -11,10 +11,10 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "publisher/publisher": "dev-master",
-        "publisher/recommendation" : "dev-master",
-        "symfony/validator": "^3.1"
-        
+        "publisher/publisher": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
     },
     "autoload": {
         "psr-4": {

@@ -3,7 +3,6 @@
 namespace Publisher\Entry\Facebook;
 
 use Publisher\Entry\AbstractEntry;
-use Publisher\Mode\Recommendation\RecommendationInterface;
 use Publisher\Helper\Validator;
 
 /**
@@ -14,7 +13,7 @@ use Publisher\Helper\Validator;
  * Even so the documentation says otherwise,
  * it is possible to tag someone without giving a place.
  */
-class FacebookPageEntry extends AbstractEntry implements RecommendationInterface
+class FacebookPageEntry extends AbstractEntry
 {
     
     const MAX_LENGTH_OF_MESSAGE = 63205; 
@@ -68,42 +67,6 @@ class FacebookPageEntry extends AbstractEntry implements RecommendationInterface
     {
         $object = json_decode($response);
         return (isset($object->id));
-    }
-    
-    // Implementation of RecommendationInterface
-    
-    public function setRecommendationParameters(
-        string $message,
-        string $url = '',
-        string $title = '',
-        $date = null
-    ) {
-        $body = array();
-        
-        $body['message'] = empty($title) ? $message : $title."\n".$message;
-        
-        if (!empty($url)) {
-            $body['link'] = $url;
-        }
-        
-        if ($date !== null) {
-            
-            if (is_int($date)) {
-                $scheduledDate = new \DateTime();
-                $scheduledDate->setTimestamp($date);
-            } else {
-                $scheduledDate = $date;
-            }
-            
-            $valid = Validator::isValidSchedule($scheduledDate, 'PT15M', 'P6M');
-            
-            if ($valid === true) {
-                $body['published'] = false;
-                $body['scheduled_publish_time'] = $scheduledDate->getTimestamp();
-            }
-        }
-        
-        $this->setBody($body);
     }
     
 }

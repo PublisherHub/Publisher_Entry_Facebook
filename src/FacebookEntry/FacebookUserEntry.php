@@ -3,7 +3,6 @@
 namespace Publisher\Entry\Facebook;
 
 use Publisher\Entry\AbstractEntry;
-use Publisher\Mode\Recommendation\RecommendationInterface;
 use Publisher\Helper\Validator;
 
 /**
@@ -13,7 +12,7 @@ use Publisher\Helper\Validator;
  * Even so the documentation says otherwise,
  * it is possible to tag someone without giving a place.
  */
-class FacebookUserEntry extends AbstractEntry implements RecommendationInterface
+class FacebookUserEntry extends AbstractEntry
 {
     
     const MAX_LENGTH_OF_MESSAGE = 63205; 
@@ -45,22 +44,4 @@ class FacebookUserEntry extends AbstractEntry implements RecommendationInterface
         return (isset($object->id));
     }
     
-    // Implementation of RecommendationInterface
-    
-    public function setRecommendationParameters(
-        string $message,
-        string $url = '',
-        string $title = '',
-        $date = null
-    ) {
-        $body = array();
-        
-        $body['message'] = empty($title) ? $message : $title."\n".$message;
-        
-        if (!empty($url)) {
-            $body['link'] = $url;
-        }
-        
-        $this->setBody($body);
-    }
 }

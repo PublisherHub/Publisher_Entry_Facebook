@@ -2,11 +2,7 @@
 Provides Entries for publisher/publisher to post to Facebook.
 
 FacebookUserEntry: post a status message as a user.
--> implements publisher/recommendation
-
 FacebookPageEntry: post a status message as a page admin.
--> implements publisher/recommendation
-    -> offers scheduled publishing
 
 
 # Installation
